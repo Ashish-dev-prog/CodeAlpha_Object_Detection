@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+
+# Model weights & exports (kept locally on disk, excluded from git)
+*.pt
+*.onnx
+*.engine
+
+# Generated outputs & training artifacts
+outputs/
+runs/
+tuning_raw.jpg
+tuning_result.jpg
+
+# Dataset media, labels, cache, and local manifest (keep dataset.yaml tracked)
+datasets/*/images/
+datasets/*/labels/
+datasets/*/manifest.json
+*.cache
+
+# OS / IDE / external tools
+.DS_Store
+Thumbs.db
+cvat/

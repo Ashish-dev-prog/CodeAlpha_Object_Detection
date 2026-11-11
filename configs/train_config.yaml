@@ -1,0 +1,39 @@
+# ============================================================
+# Training Configuration
+# Edit this file to change training parameters.
+# CLI arguments (--epochs, --batch, etc.) override these values.
+# ============================================================
+
+# Pretrained weights to start from (NEVER modified by training).
+pretrained_weights: "yolo11s.pt"
+
+# Dataset YAML (relative to project root).
+data: "datasets/object_detection/dataset.yaml"
+
+# Name for this training run (creates runs/train/<experiment_name>/).
+experiment_name: "yolo11s_custom_v1"
+
+# --- Training parameters (conservative for 8 GB GPU) ---
+epochs:   50      # Total training epochs.  Increase once dataset is validated.
+imgsz:   640      # Input resolution.  Must be a multiple of 32.
+batch:     4      # Images per batch.  Increase to 8-16 only if GPU memory allows.
+patience: 15      # Early stop after N epochs without val-loss improvement.
+device:    0      # CUDA device index.  Use "cpu" to force CPU.
+
+# --- Augmentation ---
+augment: true
+mosaic:  1.0      # Mosaic augmentation probability (0-1).  Helps small datasets.
+mixup:   0.0      # MixUp probability.  Keep at 0 for initial runs.
+
+# --- Optimiser ---
+optimizer: "AdamW"
+lr0:    0.001     # Initial learning rate.
+lrf:    0.01      # Final learning rate multiplier (lr = lr0 * lrf at end).
+weight_decay: 0.0005
+
+# --- Output ---
+project:     "runs/train"   # Subdirectory for training outputs.
+save_period:  5             # Save a checkpoint every N epochs.
+plots:       true           # Save training curves and confusion matrix plots.
+verbose:     true
+

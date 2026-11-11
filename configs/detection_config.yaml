@@ -1,0 +1,57 @@
+# ============================================================
+# Detection Configuration
+# Edit this file to change model, camera, thresholds, and
+# target classes without touching any Python source code.
+# ============================================================
+
+# --- Input source ---
+# Options: "webcam" | "image" | "video"
+input_source: "webcam"
+
+# Webcam index (0 = default camera, 1 = secondary camera)
+camera_index: 1
+
+# Path to image or video file (used when input_source != "webcam")
+# Example: "C:/Users/Lenovo/Pictures/room.jpg"
+input_path: ""
+
+# Requested webcam resolution (the camera may not honour this exactly)
+camera_width: 1280
+camera_height: 720
+
+# --- Model ---
+# Path is relative to the project root unless it is absolute.
+model_path: "yolo11s.pt"
+
+# CUDA device index (0 = first GPU).  Use "cpu" to force CPU inference.
+device: 0
+
+# --- Inference parameters ---
+imgsz: 960          # Must be a multiple of 32.  Higher = slower but more detail.
+conf: 0.20          # Detections below this confidence are suppressed.
+iou: 0.45           # Intersection-over-Union threshold for NMS (box deduplication).
+
+# --- Target classes ---
+# Leave empty to detect all 80 COCO classes.
+# Class names must match COCO exactly (case-insensitive).
+target_classes:
+  - book
+  - bed
+  - chair
+
+# --- Output ---
+# Directory where saved frames and logs are written.
+output_dir: "outputs"
+
+# Whether to save annotated frames when the user presses S.
+save_annotated: true
+
+# Whether to save the original (un-annotated) frame alongside the annotated one.
+save_original: true
+
+# Detection log format: "csv" or "json"
+log_format: "csv"
+
+# Whether to log every detection to file (can produce large files for video).
+enable_logging: true
+

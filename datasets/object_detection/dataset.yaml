@@ -1,0 +1,50 @@
+# ============================================================
+# Dataset Configuration — YOLO Format
+# Edit class names here to change them project-wide.
+# ============================================================
+
+# Path entries are relative to project root (or use absolute path).
+path: datasets/object_detection       # Dataset root (relative to project root)
+train: images/train
+val:   images/val
+test:  images/test
+
+# Number of classes
+nc: 3
+
+# Class names — order determines the class ID (0, 1, 2 …)
+# IMPORTANT: The order here must match the integer labels in your .txt files
+# and your CVAT Project label configuration.
+names:
+  - book       # class 0
+  - bed        # class 1
+  - chair      # class 2
+
+# ============================================================
+# Notes for annotation (CVAT Workflow)
+# ============================================================
+# Recommended annotation tool: CVAT (https://app.cvat.ai or self-hosted)
+# See CVAT_ANNOTATION_GUIDE.md for step-by-step instructions.
+#
+# In CVAT, define labels in this EXACT order:
+#   1. book   (ID 0)
+#   2. bed    (ID 1)
+#   3. chair  (ID 2)
+#
+# Export format:
+#   "Ultralytics YOLO Detection 1.0" (or "YOLO 1.1")
+#
+# YOLO label format (one line per object):
+#   <class_id> <x_centre> <y_centre> <width> <height>
+#   All coordinates normalised to [0.0, 1.0] relative to image dimensions.
+#   Empty .txt files are valid for background/negative images (no objects).
+#
+# Data split guidelines:
+#   train: ~70-80 % of images
+#   val:   ~10-15 %
+#   test:  ~10-15 %
+#
+# Session integrity (prevent data leakage):
+#   Do NOT mix frames from the same recording session across splits.
+#   Use dataset_manifest.py to manage session-aware splitting, and
+#   dataset_validator.py to validate integrity before training.
